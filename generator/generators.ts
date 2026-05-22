@@ -234,10 +234,10 @@ export function generateMessageStaticDeclarations(output: Writer, message: {
   payloadLength?: number
 }) {
   // generate static fields
-  output.write(`  static MSG_ID = ${message.id}`)
-  output.write(`  static MSG_NAME = '${message.source.name}'`)
-  output.write(`  static PAYLOAD_LENGTH = ${message.payloadLength}`)
-  output.write(`  static MAGIC_NUMBER = ${message.magic}`)
+  output.write(`  static override MSG_ID = ${message.id}`)
+  output.write(`  static override MSG_NAME = '${message.source.name}'`)
+  output.write(`  static override PAYLOAD_LENGTH = ${message.payloadLength}`)
+  output.write(`  static override MAGIC_NUMBER = ${message.magic}`)
   output.write(``)
 }
 
@@ -255,7 +255,7 @@ export function generateMessageDefinitionFields(output: Writer, fields: {
     name: string
   }
 }[]) {
-  output.write('  static FIELDS = [')
+  output.write('  static override FIELDS = [')
 
   // base fields go first; they are sorted from the largest fields to the smallest
   // if the size is the same then the order from xml is preserved
