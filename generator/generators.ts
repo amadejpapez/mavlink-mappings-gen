@@ -318,7 +318,7 @@ export function generateMessageConstructor(output: Writer, fields: {
       : is64BitField(field)
         ? 'BigInt(0)'
         : isEnum(field)
-          ? `${field.type}[Object.keys(${field.type})[0]]` // this assumes there is at least one value in the enum
+          ? `${field.type}[Object.keys(${field.type})[0]! as keyof typeof ${field.type}]` // this assumes there is at least one value in the enum
           : 0
 
     const init = field.arrayLength && field.type !== 'string' ? `[]` : initValue
