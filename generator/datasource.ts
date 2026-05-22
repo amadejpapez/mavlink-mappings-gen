@@ -212,7 +212,7 @@ export class XmlDataSource {
       workInProgress: isWorkInProgress(message),
       fields: this.readMessageFieldDefs(message),
       wip: Boolean(message.wip)
-    } as MessageDef)).filter((x: any) => !x.wip)
+    } as MessageDef))
 
     return pipeable(result)
       // calculate payload length
@@ -285,7 +285,6 @@ export class XmlDataSource {
           .filter(param => param.label)
           .map(param => ({ ...param, name: labelToIdentifier(param.label), orgName: param.label }))
       } as CommandTypeDef))
-      .filter(command => !command.workInProgress)
 
     return pipeable(result)
   }
