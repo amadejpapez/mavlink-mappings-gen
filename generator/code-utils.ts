@@ -145,6 +145,7 @@ export function nameToClassName(input: string = '') {
 export function labelToIdentifier(input: string) {
   return input
     .toLowerCase()
+    .replace(/[()]/g, '')
     .replace(/\s+(\w)?/gi, (match, letter) => letter.toUpperCase())
     .split('/')[0]
     .replace(/\-\S+/g, m => m.charAt(1).toUpperCase() + m.substr(2))
