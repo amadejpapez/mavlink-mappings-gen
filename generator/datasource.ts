@@ -119,7 +119,7 @@ export class XmlDataSource {
 
   private readEnumDefs(mavlink: any): EnumDef[] & Pipeable<EnumDef[]> | undefined {
     // If enums are empty, the parameter below becomes undefined and throws an error, so we check for that
-    if(mavlink.enums[0].enum === undefined) return undefined;
+    if (mavlink.enums?.[0]?.enum === undefined) return undefined;
 
     // read raw values from the source XML definition
     const result = mavlink.enums[0].enum.map((xml: any) => ({
